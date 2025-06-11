@@ -8,7 +8,7 @@ export const getProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   const { id } = req.params;
 
-  const product = await Product.fingByPk(id);
+  const product = await Product.findByPk(id);
   if (!product) throw new error("Product not found", { cause: 404 });
   res.json(product);
 };

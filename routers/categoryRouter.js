@@ -5,22 +5,22 @@ import {
   getCategoryById,
   deleteCategory,
   updateCategory,
-} from "../controllers/categoryController";
+} from "../controllers/categoryController.js";
 
-import validateShema from "../middleware/validateShema";
-import categoryShema from "../schemas/categorySchema";
+import validateSchema from "../middleware/validateSchema.js";
+import categorySchema from "../schemas/categorySchema.js";
 
 const router = Router();
 
 router
   .route("/")
   .get(getCategories)
-  .post(validateShema(categoryShema), createCategory);
+  .post(validateSchema(categorySchema), createCategory);
 
 router
   .route("/:id")
   .get(getCategoryById)
-  .put(validateShema(categoryShema), updateCategory)
+  .put(validateSchema(categorySchema), updateCategory)
   .delete(deleteCategory);
 
 export default router;

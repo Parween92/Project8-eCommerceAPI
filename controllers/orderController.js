@@ -1,5 +1,5 @@
-import Order from "../models/Order";
-import OrderItem from "../models/OrderItem";
+import Order from "../models/Order.js";
+import OrderItem from "../models/OrderItem.js";
 import Product from "../models/Product.js";
 import User from "../models/User.js";
 

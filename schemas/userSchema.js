@@ -9,7 +9,10 @@ const userSchema = z.object({
     .string("Email must be a string")
     .min(1, "Email must be at least 1 character")
     .max(255, "Email must be at most 255 characters"),
-  password: z.password("Must be a password"),
+  password: z
+    .string("Must be a password")
+    .min(1, "Name must be at least 1 character")
+    .max(255, "Name must be at most 255 characters"),
 });
 
 export default userSchema;

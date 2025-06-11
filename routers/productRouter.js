@@ -1,26 +1,26 @@
 import { Router } from "express";
 import {
   createProduct,
-  getCategories,
+  getProducts,
   getProductById,
   deleteProduct,
   updateProduct,
-} from "../controllers/productController";
+} from "../controllers/productController.js";
 
-import validateShema from "../middleware/validateShema";
-import productShema from "../schemas/productSchema";
+import validateSchema from "../middleware/validateSchema.js";
+import productSchema from "../schemas/productSchema.js";
 
 const router = Router();
 
 router
   .route("/")
-  .get(getCategories)
-  .post(validateShema(productShema), createProduct);
+  .get(getProducts)
+  .post(validateSchema(productSchema), createProduct);
 
 router
   .route("/:id")
   .get(getProductById)
-  .put(validateShema(productShema), updateProduct)
+  .put(validateSchema(productSchema), updateProduct)
   .delete(deleteProduct);
 
 export default router;

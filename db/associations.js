@@ -1,8 +1,9 @@
-import Order from "../models/Order";
-import OrderItem from "../models/OrderItem";
+import Order from "../models/Order.js";
+import OrderItem from "../models/OrderItem.js";
 import Product from "../models/Product.js";
 import User from "../models/User.js";
 import Category from "../models/Category.js";
+import sequelize from "./index.js";
 
 // 1. User:  hat viele Orders--->
 User.hasMany(Order, {
@@ -54,3 +55,4 @@ Product.belongsToMany(Order, {
     name: "productId",
   },
 });
+sequelize.sync();

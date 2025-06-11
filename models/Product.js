@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import Sequelize from "sequelize";
+import sequelize from "../db/index.js";
 
-const Product = Sequelize.define("Product", {
+const Product = sequelize.define("Product", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,

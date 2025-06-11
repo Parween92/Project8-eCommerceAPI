@@ -1,8 +1,3 @@
-// User
-// id: Integer
-// name: String
-// email: String
-// password: String
 import { DataTypes } from "sequelize";
 import sequelize from "../db/index.js";
 
@@ -22,3 +17,8 @@ const User = sequelize.define("User", {
   },
 });
 export default User;
+// User
+// id: Integer
+// name: String
+// email: String
+// password: String

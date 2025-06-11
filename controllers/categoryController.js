@@ -1,8 +1,8 @@
-import Category from "../models/Category";
+import Category from "../models/Category.js";
 
 export const getCategories = async (req, res) => {
-  const categories = await Category.findAll();
-  res.json(categories);
+  const categorys = await Category.findAll();
+  res.json(categorys);
 };
 
 export const getCategoryById = async (req, res) => {
@@ -33,6 +33,6 @@ export const deleteCategory = async (req, res) => {
   const category = await Category.findByPk(id);
   if (!category) throw new Error("Category not found", { cause: 404 });
 
-  await Category.destroy();
+  await category.destroy();
   res.json(category);
 };

@@ -5,19 +5,19 @@ import {
   updateOrder,
   deleteOrder,
   createOrder,
-} from "../controllers/orderController";
+} from "../controllers/orderController.js";
 
-import validateShema from "../middleware/validateShema";
-import orderShema from "../schemas/orderSchema";
+import validateSchema from "../middleware/validateSchema.js";
+import orderSchema from "../schemas/orderSchema.js";
 
 const router = Router();
 
-router.route("/").get(getOrders).post(validateShema(orderShema), createOrder);
+router.route("/").get(getOrders).post(validateSchema(orderSchema), createOrder);
 
 router
   .route("/:id")
   .get(getOrderById)
-  .put(validateShema(orderShema), updateOrder)
+  .put(validateSchema(orderSchema), updateOrder)
   .delete(deleteOrder);
 
 export default router;
