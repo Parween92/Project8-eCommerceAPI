@@ -1,3 +1,5 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize(process.env.PG_URI, { logging: false });
+const sequelize = new Sequelize(process.env.PG_URI, { logging: false });
+export default sequelize;
+
