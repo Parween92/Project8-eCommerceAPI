@@ -1,5 +1,7 @@
+import Order from "../models/Order";
+import OrderItem from "../models/OrderItem";
+import Product from "../models/Product.js";
 import User from "../models/User.js";
-import { Order, Product, OrderItem } from "../models/associations.js";
 
 export const getOrders = async (req, res) => {
   const orders = await Order.findAll({
@@ -92,7 +94,7 @@ export const createOrder = async (req, res) => {
 };
 
 //UPDATE
-export const updateorder = async (req, res) => {
+export const updateOrder = async (req, res) => {
   const { id } = req.params;
   const { userId, products } = req.body;
 

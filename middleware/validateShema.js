@@ -12,6 +12,8 @@ const validateShema = (Schema) => (req, res, next) => {
 };
 export default validateShema;
 
+//safeParse prüft, ob die Daten gültig sind, und gibt ein Erfolgsergebnis zurück – ohne dass das Programm abstürzt
+
 // if (error) {
 //   const prettifyErrorMessage = z.prettifyError(error);
 //   throw new error(prettifyErrorMessage, { cause: 400 });

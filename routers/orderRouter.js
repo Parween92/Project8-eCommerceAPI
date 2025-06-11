@@ -17,7 +17,7 @@ router.route("/").get(getOrders).post(validateShema(orderShema), createOrder);
 router
   .route("/:id")
   .get(getOrderById)
-  .put(validateShema(OrderShema), updateOrder)
+  .put(validateShema(orderShema), updateOrder)
   .delete(deleteOrder);
 
 export default router;
