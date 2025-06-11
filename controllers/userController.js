@@ -7,10 +7,10 @@ export const getUsers = async (req, res) => {
 
 export const createUser = async (req, res) => {
   const {
-    body: { firstName, lastName, email },
+    body: { name, email, password },
   } = req;
-  if (!firstName || !lastName || !email)
-    throw new Error("firstName, lastName, and email are required", {
+  if (!name || !email || !password)
+    throw new Error("name, email and password are required", {
       cause: 400,
     });
   const found = await User.findOne({ where: { email } });
@@ -31,11 +31,11 @@ export const getUserById = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const {
-    body: { firstName, lastName, email },
+    body: { name, email, password },
     params: { id },
   } = req;
-  if (!firstName || !lastName || !email)
-    throw new Error("firstName, lastName, and email are required", {
+  if (!name || !email || !password)
+    throw new Error("name, email and password are required", {
       cause: 400,
     });
   const user = await User.findByPk(id);

@@ -9,7 +9,7 @@ const productSchema = z.object({
     .string("Must be a string")
     .min(1, "Must be at least 1 character")
     .max(255, "Must be at most 255 characters"),
-  price: z.string("Must be a price"),
+  price: z.float32("Must be a price"),
 });
 
 export default productSchema;
