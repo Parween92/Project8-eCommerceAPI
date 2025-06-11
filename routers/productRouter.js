@@ -10,17 +10,15 @@ import {
 import validateSchema from "../middleware/validateSchema.js";
 import productSchema from "../schemas/productSchema.js";
 
-const router = Router();
+const productRouter = Router();
 
-router
-  .route("/")
-  .get(getProducts)
-  .post(validateSchema(productSchema), createProduct);
+productRouter.route("/").get(getProducts).post(createProduct);
+//validateSchema(productSchema),
 
-router
+productRouter
   .route("/:id")
   .get(getProductById)
-  .put(validateSchema(productSchema), updateProduct)
+  .put(updateProduct)
   .delete(deleteProduct);
 
-export default router;
+export default productRouter;
