@@ -37,7 +37,7 @@ export const getOrderById = async (req, res) => {
   });
 
   //Prüfen dann format geben
-  if (!order) throw new error("order not found", { cause: 404 });
+  if (!order) throw new Error("order not found", { cause: 404 });
 
   const newFormatOrder = {
     id: order.id,
@@ -55,6 +55,17 @@ export const getOrderById = async (req, res) => {
 //CREATE
 export const createOrder = async (req, res) => {
   const { userId, products } = req.body;
+
+  //muss ertsemal geprüft ob product schon in DB exisitiert
+  const productIds = products.map((p) => p.productId);
+  const foundProducts = await Product.findAll({
+    where: { id: productIds },
+  });
+
+  // Wenn nicht alle Produkte gefunden wurden ----> Fehler
+  if (foundProducts.length !== productIds.length) {
+    return res.status(400).json({ error: "One or more products do not exist" });
+  }
 
   //  Bestellung neu erstellen
   const order = await Order.create({ userId });
