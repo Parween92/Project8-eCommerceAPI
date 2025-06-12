@@ -34,5 +34,5 @@ export const deleteCategory = async (req, res) => {
   if (!category) throw new Error("Category not found", { cause: 404 });
 
   await category.destroy();
-  res.json(category);
+  res.json({ message: "category deleted successfully" });
 };
