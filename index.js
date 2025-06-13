@@ -1,5 +1,6 @@
 import "./db/associations.js";
 import express from "express";
+import chalk from "chalk";
 import userRouter from "./routers/userRouter.js";
 import errorHandler from "./middleware/errorHandler.js";
 import categoryRouter from "./routers/categoryRouter.js";
@@ -18,4 +19,6 @@ app.use("/orders", orderRouter);
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, () => {
+  console.log(chalk.bgBlueBright(`🚀 Server is running on port ${port}`));
+});

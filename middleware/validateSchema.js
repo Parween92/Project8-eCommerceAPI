@@ -4,7 +4,7 @@ const validateSchema = (Schema) => (req, res, next) => {
   const { error, data } = Schema.safeParse(req.body);
   if (error) {
     const prettifyErrorMessage = z.prettifyError(error);
-    throw new error(prettifyErrorMessage, { cause: 400 });
+    throw new Error(prettifyErrorMessage, { cause: 400 });
   }
   next();
 };

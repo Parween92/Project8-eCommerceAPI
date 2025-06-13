@@ -35,5 +35,5 @@ export const deleteProduct = async (req, res) => {
   if (!product) throw new Error("Product not found", { cause: 404 });
 
   await product.destroy();
-  res.json(product);
+  res.json({ message: "Product deleted successfully" });
 };

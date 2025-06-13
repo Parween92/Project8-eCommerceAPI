@@ -55,4 +55,29 @@ Product.belongsToMany(Order, {
     name: "productId",
   },
 });
+
+//  OrderItem: gehört zum Order
+OrderItem.belongsTo(Order, {
+  foreignKey: {
+    allowNull: false,
+    name: "orderId",
+  },
+});
+
+//OrderItem: gehört zum product
+OrderItem.belongsTo(Product, {
+  foreignKey: {
+    allowNull: false,
+    name: "productId",
+  },
+});
+
+// damit direkt auf alle OrderItems einer Order oder Product zugreifen
+Order.hasMany(OrderItem, {
+  foreignKey: "orderId",
+});
+Product.hasMany(OrderItem, {
+  foreignKey: "productId",
+});
+
 sequelize.sync();

@@ -31,13 +31,13 @@ export const getUserById = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const {
-    body: { name, email, password },
+    // body: { name, email, password },
     params: { id },
   } = req;
-  if (!name || !email || !password)
-    throw new Error("name, email and password are required", {
-      cause: 400,
-    });
+  // if (!name || !email)
+  //   throw new Error("name, email and password are required", {
+  //     cause: 400,
+  //   });
   const user = await User.findByPk(id);
   if (!user) throw new Error("User not found", { cause: 404 });
   await user.update(req.body);

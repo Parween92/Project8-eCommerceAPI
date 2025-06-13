@@ -11,17 +11,22 @@ export const getOrders = async (req, res) => {
     },
   });
 
-  const newFormatOrder = orders.map((order) => ({
-    id: order.id,
-    userId: order.userId,
+  const newFormatOrder = orders.map((order) => {
+    //total muss dynamisch berechnet werden
+    const total = order.Products.reduce((sum, p) => {
+      return sum + p.price * p.OrderItem.quantity;
+    }, 0);
 
-    products: order.Products.map((p) => ({
-      productId: p.id,
-      quantity: p.OrderItem.quantity,
-    })),
-    total: order.total,
-  }));
-
+    return {
+      id: order.id,
+      userId: order.userId,
+      products: order.Products.map((p) => ({
+        productId: p.id,
+        quantity: p.OrderItem.quantity,
+      })),
+      total,
+    };
+  });
   res.json(newFormatOrder);
 };
 
@@ -39,6 +44,11 @@ export const getOrderById = async (req, res) => {
   //Prüfen dann format geben
   if (!order) throw new Error("order not found", { cause: 404 });
 
+  //total muss dynamisch berechnet werden
+  const total = order.Products.reduce((sum, p) => {
+    return sum + p.price * p.OrderItem.quantity;
+  }, 0);
+
   const newFormatOrder = {
     id: order.id,
     userId: order.userId,
@@ -46,7 +56,7 @@ export const getOrderById = async (req, res) => {
       productId: p.id,
       quantity: p.OrderItem.quantity,
     })),
-    total: order.total,
+    total, // <-- ersetzt: order.total
   };
 
   res.json(newFormatOrder);
@@ -55,6 +65,17 @@ export const getOrderById = async (req, res) => {
 //CREATE
 export const createOrder = async (req, res) => {
   const { userId, products } = req.body;
+
+  //muss ertsemal geprüft wedren, ob product schon in DB exisitiert
+  const productIds = products.map((p) => p.productId);
+  const foundProducts = await Product.findAll({
+    where: { id: productIds },
+  });
+
+  // Wenn nicht alle Produkte gefunden wurden ----> Fehler
+  if (foundProducts.length !== productIds.length) {
+    return res.status(400).json({ error: "One or more products do not exist" });
+  }
 
   //  Bestellung neu erstellen
   const order = await Order.create({ userId });
