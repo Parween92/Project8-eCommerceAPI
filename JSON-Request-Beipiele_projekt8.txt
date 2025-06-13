@@ -1,0 +1,128 @@
+//POST /user
+{
+  "name": "Alice Müller",
+  "email": "alice@example.com",
+  "password": "StrongPassword123"
+}
+{
+  "name": "Bob Schmidt",
+  "email": "bob@example.com",
+  "password": "MySecurePass456"
+}
+{
+  "name": "Carla Weber",
+  "email": "carla@example.com",
+  "password": "CarlaSecret789"
+}
+//PUT /user/id
+{
+  "name": "Alice Müller",
+  "email": "alice.mueller@example.com"
+}
+{
+  "name": "Bob S.",
+  "email": "bob.s@example.com"
+}
+{
+  "name": "Carla W.",
+  "email": "carla.w@example.com"
+}
+//POST /products
+{
+  "name": "Bluetooth Speaker",
+  "description": "High-quality portable speaker",
+  "price": 49.99,
+  "categoryId": 2
+}
+{
+  "name": "USB-C Cable",
+  "description": "Durable USB-C charging cable",
+  "price": 9.99,
+  "categoryId": 3
+}
+{
+  "name": "Wireless Mouse",
+  "description": "Ergonomic mouse for daily use",
+  "price": 29.99,
+  "categoryId": 2
+}
+//PUT /products/id
+{
+  "name": "Bluetooth Speaker XL",
+  "description": "Louder and with more bass",
+  "price": 59.99,
+  "categoryId": 2
+}
+{
+  "name": "USB-C Cable Pro",
+  "description": "Faster charging, braided cable",
+  "price": 14.99,
+  "categoryId": 3
+}
+{
+  "name": "Wireless Mouse V2",
+  "description": "New sensor, better grip",
+  "price": 34.99,
+  "categoryId": 2
+}
+//POST /categories
+{
+  "name": "Electronics"
+}
+{
+  "name": "Accessories"
+}
+{
+  "name": "Office Supplies"
+}
+//PUT /categories/id
+{
+  "name": "Updated Electronics"
+}
+{
+  "name": "Updated Accessories"
+}
+{
+  "name": "Updated Office Supplies"
+}
+//POST /orders
+{
+  "userId": 2,
+  "products": [
+    { "productId": 3, "quantity": 1 },
+    { "productId": 1, "quantity": 2 }
+  ]
+}
+{
+  "userId": 3,
+  "products": [
+    { "productId": 2, "quantity": 4 }
+  ]
+}
+{
+  "userId": 1,
+  "products": [
+    { "productId": 3, "quantity": 1 },
+    { "productId": 2, "quantity": 1 }
+  ]
+}
+//PUT /orders/id
+{
+  "userId": 2,
+  "products": [
+    { "productId": 1, "quantity": 3 }
+  ]
+}
+{
+  "userId": 3,
+  "products": [
+    { "productId": 3, "quantity": 2 }
+  ]
+}
+{
+  "userId": 1,
+  "products": [
+    { "productId": 2, "quantity": 2 },
+    { "productId": 3, "quantity": 2 }
+  ]
+}
