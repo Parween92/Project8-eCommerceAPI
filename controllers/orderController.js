@@ -37,7 +37,7 @@ export const getOrderById = async (req, res) => {
   });
 
   //Prüfen dann format geben
-  if (!order) throw new error("order not found", { cause: 404 });
+  if (!order) throw new Error("order not found", { cause: 404 });
 
   const newFormatOrder = {
     id: order.id,
